@@ -172,7 +172,6 @@ export const Header: FC<HeaderProps> = ({ className }) => {
             {formatMessage({ id: 'auth.register' })}
           </a>
           <LocalePicker />
-          {githubLink}
         </div>
       )}
     </div>
