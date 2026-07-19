@@ -19,6 +19,7 @@ async function initDayjs(locale: string): Promise<void> {
       await import('dayjs/locale/en');
       return;
     case 'zh-CN':
+    case 'zh-HK':
       await import('dayjs/locale/zh-cn');
       return;
   }
@@ -28,6 +29,7 @@ async function loadAntdLocale(locale: string) {
   // 引入 antd 的 locale
   switch (matchLocale(locale)) {
     case 'zh-CN':
+    case 'zh-HK':
       return import('antd/es/locale/zh_CN').then((_) => _.default);
     case 'en':
       return import('antd/es/locale/en_US').then((_) => _.default);
@@ -35,7 +37,7 @@ async function loadAntdLocale(locale: string) {
   return import('antd/es/locale/en_US').then((_) => _.default);
 }
 
-type Messages = typeof import('./zh-cn.json') | typeof import('./en.json');
+type Messages = typeof import('./zh-cn.json') | typeof import('./en.json') | typeof import('./zh-hk.json');
 
 async function loadI18nLocale(locales: string[]): Promise<Messages> {
   for (const l of locales) {
@@ -44,6 +46,8 @@ async function loadI18nLocale(locales: string[]): Promise<Messages> {
         return import('./en.json').then((_) => _.default);
       case 'zh-CN':
         return import('./zh-cn.json').then((_) => _.default);
+      case 'zh-HK':
+        return import('./zh-hk.json').then((_) => _.default);
     }
   }
   return import('./en.json').then((_) => _.default);
@@ -151,6 +155,7 @@ const getAntdValidateMessages = (locale: string) => {
 
   switch (matchLocale(locale)) {
     case 'zh-CN':
+    case 'zh-HK':
       return zhCN;
     default:
       return enUS;
@@ -173,12 +178,15 @@ export const getIntl = () => {
 export const availableLocales = {
   en: 'English',
   'zh-CN': '简体中文',
+  'zh-HK': '繁體中文',
 } as const;
 
 export type SupportedLocale = keyof typeof availableLocales;
 
 function matchLocale(l: string): SupportedLocale {
-  if (/^zh/i.test(l)) {
+  if (/^zh-(HK|TW|Hant)/i.test(l)) {
+    return 'zh-HK';
+  } else if (/^zh/i.test(l)) {
     return 'zh-CN';
   } else if (/^en/i.test(l)) {
     return 'en';

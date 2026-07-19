@@ -22,6 +22,7 @@ function* extractPathedMessages(obj: object, locale: string, pathPrefix: readonl
 
 const lang2Basename = Object.entries({
     zhCn: 'zh-cn.json',
+    zhHk: 'zh-hk.json',
     en: 'en.json',
 })
 
