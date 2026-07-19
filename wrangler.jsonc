@@ -2,6 +2,7 @@
   "name": "fan-tran",
   "compatibility_date": "2026-07-19",
   "assets": {
-    "directory": "./build"
+    "directory": "./build",
+    "not_found_handling": "single-page-application"
   }
 }
