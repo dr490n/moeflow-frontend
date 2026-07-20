@@ -3,8 +3,9 @@
 body {
   margin: 0;
   font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -apple-system, BlinkMacSystemFont, 'Microsoft JhengHei', 'Microsoft YaHei', 
+    'Segoe UI', Roboto, 'PingFang SC', 'PingFang HK', Cantarell, 'Fira Sans',
+    'Droid Sans', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
